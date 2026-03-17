@@ -548,8 +548,11 @@
 }
 % 脚注字号设为小五号
 \renewcommand{\footnotesize}{\zihao{-5}}
-% 脚注编号加中括号
+% 脚注编号格式：正文处上标显示 [n]，脚注区域内平排显示 [n]（不作上标）
 \renewcommand{\thefootnote}{[\arabic{footnote}]}
+\renewcommand{\@makefnmark}{\textsuperscript{\normalfont\thefootnote}}
+\renewcommand{\@makefntext}[1]{%
+  \noindent\hspace{2em}{\normalfont\thefootnote}\enspace#1}
 % \citefoot{key}：正文处显示脚注编号上标，当页脚注输出完整文献信息
 % 不使用 \supercite（避免两套编号并列），只用脚注编号作为正文标注
 \newcommand{\citefoot}[1]{\footnote{\zihao{-5}\fullcite{#1}}}
