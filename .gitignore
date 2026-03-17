@@ -11,6 +11,15 @@
 *.synctex.gz
 *.fdb_latexmk
 *.fls
+*.lof
+*.lot
+*.idx
+*.ind
+*.ilg
+*.nav
+*.snm
+*.vrb
+*.xdv
 
 # 保留示例图片（例外规则）
 !figures/*.pdf
