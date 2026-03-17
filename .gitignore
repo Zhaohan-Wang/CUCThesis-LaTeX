@@ -1,0 +1,18 @@
+# LaTeX 编译产物
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.log
+*.out
+*.run.xml
+*.toc
+*.pdf
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# 保留示例图片（例外规则）
+!figures/*.pdf
+# 保留预览图片
+!preview/*.png

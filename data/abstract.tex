@@ -1,0 +1,17 @@
+% 中文摘要
+\begin{cnabstract}[学位论文；LaTeX 模板；排版规范；中国传媒大学；xeCJK]
+学位论文的排版质量直接影响论文的呈现效果与评审印象。然而，现有 \LaTeX{} 模板大多面向理工科院校，缺乏针对传媒类高校排版规范的专门适配，研究生在使用过程中往往需要投入大量精力手动调整格式。本文以中国传媒大学研究生学位论文撰写规范为依据，设计并实现了一套基于 \LaTeX{} 的学位论文排版模板。
+
+本模板采用 \texttt{xeCJK} 与 \texttt{fontspec} 处理中英文混排，以 Windows 标准字体（SimSun 宋体、SimHei 黑体、KaiTi 楷体、FangSong 仿宋）作为正文字形，确保与 Word 排版的字宽一致；加粗效果通过 \texttt{AutoFakeBold} 模拟实现，字体文件随项目打包，无需在系统中额外安装；以 \texttt{tocloft} 定制目录样式，实现章节标题的多级缩进与字体分级显示；以 \texttt{ctexbook} 为基类，按规范配置了章（三号黑体居中）、节（小三号黑体居中）、条（四号黑体左缩进）、款（小四号黑体左缩进）四级标题格式；正文行距采用固定值 22 磅，页边距按规范设置为左右各 2.5 cm、上下各 3.5 cm。此外，模板还包含封面、独创性声明、人工智能使用声明、中英文摘要、参考文献及致谢等完整的前置与后置页面。
+
+本模板可作为中国传媒大学研究生撰写学位论文的 \LaTeX{} 起点，降低格式调整的学习成本，使研究生得以将精力集中于论文内容本身。
+\end{cnabstract}
+
+% 英文摘要
+\begin{enabstract}[Thesis Template; LaTeX; Typesetting Standard; Communication University of China; xeCJK]
+The typesetting quality of a thesis directly affects its presentation and the impression it makes during review. However, most existing \LaTeX{} templates are tailored for science and engineering institutions and lack specific adaptation to the formatting standards of media-oriented universities. Graduate students often spend considerable effort manually adjusting formats during the writing process.
+
+This paper presents the design and implementation of a \LaTeX{} thesis typesetting template based on the graduate thesis writing standards of the Communication University of China (CUC). The template employs \texttt{xeCJK} and \texttt{fontspec} to handle mixed Chinese-English typesetting, using standard Windows fonts (SimSun, SimHei, KaiTi, FangSong) as the body typefaces to ensure character-width consistency with Word; bold rendering is achieved via \texttt{AutoFakeBold}, and all font files are bundled within the project so no system-level font installation is required. Table of contents styling is customized via \texttt{tocloft} to support multi-level indentation and font differentiation by heading level. Built on \texttt{ctexbook}, the template configures four heading levels according to the standard: chapter (3rd-size Heiti, centered), section (small 3rd-size Heiti, centered), subsection (4th-size Heiti, 2-character left indent), and subsubsection (small 4th-size Heiti, 2-character left indent). Body text uses a fixed line spacing of 22 pt with margins of 2.5 cm on each side and 3.5 cm top and bottom. The template also includes complete front and back matter: cover page, originality declaration, AI usage statement, Chinese and English abstracts, bibliography, and acknowledgements.
+
+This template serves as a ready-to-use \LaTeX{} starting point for CUC graduate students, reducing the overhead of format compliance and allowing authors to focus on the content of their research.
+\end{enabstract}

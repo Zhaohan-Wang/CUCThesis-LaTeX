@@ -1,0 +1,123 @@
+\documentclass{CUCThesis}
+\bibliography{ref} % Include the bibliography file
+\usepackage{xeCJK}  
+% 使用该宏包可以为参考文献、图表、公式添加超链接。但是可能会影响观感，可根据需要自行选择是否使用。
+% 默认样式：使用方框标识超链接，很多期刊论文中有用
+\usepackage[]{hyperref}
+
+\hypersetup{
+    colorlinks = true,   % 使用颜色而非边框标识链接
+    linkcolor  = black,  % 内部链接（目录、章节引用等）
+    citecolor  = black,  % 文献引用
+    urlcolor   = black,  % URL链接
+    filecolor  = black   % 文件链接
+}
+
+% 字体方案：统一使用 Windows 标准字体，模拟加粗
+% 所有字体文件放在项目 fonts/ 目录下
+\setCJKmainfont[Path=fonts/, AutoFakeBold=2.5]{SimSun.ttc}
+\setCJKfamilyfont{songti}[Path=fonts/, AutoFakeBold=2.5]{SimSun.ttc}
+\setCJKfamilyfont{heiti}[Path=fonts/, AutoFakeBold=2.5]{SimHei.ttf}
+\setCJKfamilyfont{kaiti}[Path=fonts/, AutoFakeBold=2.5]{Kaiti.ttf}
+\setCJKfamilyfont{fangsong}[Path=fonts/, AutoFakeBold=2.5]{FangSong.ttf}
+% 指定图片文件的默认目录
+\graphicspath{{figures/}}
+
+% 参考文献文件位置
+\addbibresource{ref.bib}
+\usepackage{adjustbox} 
+% 论文参数设置
+\setup{
+  % 论文类别【博士学位论文/硕士学位论文/硕士专业学位论文/同等学力申请硕士学位论文】
+  Type = 硕士学位论文,
+  % 页眉 【中国传媒大学硕士学位论文/中国传媒大学博士学位论文】
+  Header = 中国传媒大学硕士学位论文,
+  % 分类号
+  Classification = （按中国图书分类法）,
+  % 密级
+  Security = 公开,
+  % 学号
+  StudentID = ,
+  % 中文论文题目（封面）
+  TitleinCover = \customtitle{基于 \LaTeX{} 的中国传媒大学研究生,学位论文排版模板设计},
+  % 英文论文题目（封面）
+  TitleinCoverEN = \customtitle{Design of a \LaTeX{} Thesis Template for,Graduate Students at CUC},
+  % 中文论文题目（正文）
+  TitleinBody = 基于 \LaTeX{} 的中国传媒大学研究生学位论文排版模板设计,
+  % 英文论文题目（正文）
+  TitleinBodyEN = {Design of a \LaTeX{} Thesis Template for Graduate Students at CUC},
+  % 申请人姓名
+  Author = 你的姓名,
+  % 指导教师
+  Supervisor = 你的导师,
+  % 专业名称
+  Major = 你的专业,
+  % 研究方向
+  Research = 你的研究方向,
+  % 所在学院
+  College = 你的学院,
+  % 提交日期
+  Date = ,
+}
+
+\setcounter{secnumdepth}{4}
+\begin{document}
+% 恢复 \clearpage（在 AtBeginDocument 中曾被设为 \relax，避免封面前多出一页空白）
+\CUCThesisRestoreClearpage
+% 禁止双面排版时在奇数页前插入空白页
+\let\cleardoublepage\clearpage
+
+% ==========================================================
+% ======================论文前置部分==========================
+% ==========================================================
+% 封面：暂时让 \cleardoublepage 无效，否则 \begin{titlepage} 会先换页导致封面前多一页空白
+\let\cleardoublepage\relax
+\coverpage
+\let\cleardoublepage\clearpage
+
+% 独创性声明【这里可能要替换为扫描版PDF】
+\copyrightpage
+
+% 人工智能使用诚信声明
+\aistatementpage
+
+% 关于人工智能使用的声明（附录填写页）
+\aiusagepage
+
+% 中英文摘要
+\include{data/abstract}
+
+% 目录（无页眉）
+\clearpage
+\thispagestyle{empty}
+\tableofcontents
+\thispagestyle{empty}
+\clearpage
+
+% 插图和附表清单
+% \listoffiguresandtables
+
+% ==========================================================
+% ======================论文主体部分==========================
+% ==========================================================
+% 从第一页开始 恢复阿拉伯数字页码
+\pagenumbering{arabic}
+
+% 正文写作，学位论文篇幅较长，建议分章节写作，每章节一个文件
+
+\include{data/chapter1}
+\include{data/chapter2}
+
+% ==========================================================
+% ======================论文结尾部分==========================
+% ==========================================================
+
+% 参考文献，目前使用的后端为biber，编译方式为xelatex-biber-xelatex-xelatex
+\begin{reference}
+  \printbibliography[heading=none]
+\end{reference}
+
+% 致谢
+\include{data/acknowledgements}
+
+\end{document}
