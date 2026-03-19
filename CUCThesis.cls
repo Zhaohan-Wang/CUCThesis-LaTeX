@@ -492,19 +492,20 @@
 
   \begin{center}
     \heiti\zihao{3} \bfseries \CUCThesis@TitleinBody
-    
-    \vspace{1em}
-
-    \heiti\zihao{-3} \bfseries 摘 \quad 要
-
-    \vspace{1em}
   \end{center}
+
+  \vspace{\baselineskip}
+
+  \begin{center}
+    \heiti\zihao{-3} \bfseries 摘 \quad 要
+  \end{center}
+
+  \vspace{\baselineskip}
 
 }{
 
-  \vspace{1em}
-  {\heiti\zihao{4} 关键词：}
-  \CUCThesis@Keywords
+  \vspace{\baselineskip}
+  \noindent{\heiti\zihao{4} 关键词：}\CUCThesis@Keywords
   \clearpage
 }
 
@@ -519,16 +520,18 @@
 
   \begin{center}
     \textit{ \zihao{3} \bfseries \CUCThesis@TitleinBodyEN}
-    
-    \vspace{2em}
-
-    \zihao{4} \bfseries ABSTRACT
-
-    \vspace{1em}
   \end{center}
 
+  \vspace{\baselineskip}
+
+  \begin{center}
+    \zihao{4} \bfseries ABSTRACT
+  \end{center}
+
+  \vspace{\baselineskip}
+
 }{
-  \vspace{2em}
+  \vspace{\baselineskip}
 
   \noindent
   {\zihao{4} \bfseries KEYWORDS:}~~%
