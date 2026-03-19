@@ -493,12 +493,7 @@
   }
 
   \begin{center}
-    \heiti\zihao{3} \bfseries \CUCThesis@TitleinBody
-  \end{center}
-
-  \vspace{\baselineskip}
-
-  \begin{center}
+    \heiti\zihao{3} \bfseries \CUCThesis@TitleinBody \\[1\baselineskip]
     \heiti\zihao{-3} \bfseries 摘 \quad 要
   \end{center}
 
@@ -520,18 +515,12 @@
   KeywordsEN = #1,
   }
 
-  % 标题全大写，两侧各留约 2.8cm（≈5个三号字宽）边距
+  % 标题全大写，两侧留5字符空隙；ABSTRACT 在同一 center 块内，标题后空三行
   \begin{center}
-    \begin{minipage}[t]{0.64\textwidth}
+    \begin{minipage}[t]{0.78\textwidth}
       \centering
       \zihao{3} \bfseries \CUCThesis@TitleinBodyENUpper
-    \end{minipage}
-  \end{center}
-
-  % 标题到 ABSTRACT 空三行
-  \vspace{3\baselineskip}
-
-  \begin{center}
+    \end{minipage} \\[3\baselineskip]
     \zihao{4} \bfseries ABSTRACT
   \end{center}
 
