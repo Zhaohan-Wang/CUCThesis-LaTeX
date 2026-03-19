@@ -493,15 +493,17 @@
   }
 
   \begin{center}
-    \heiti\zihao{3} \bfseries \CUCThesis@TitleinBody \\[1\baselineskip]
+    \heiti\zihao{3} \bfseries \CUCThesis@TitleinBody
+  \end{center}
+  \vspace{-\parskip}\vspace{\baselineskip}
+  \begin{center}
     \heiti\zihao{-3} \bfseries 摘 \quad 要
   \end{center}
-
-  \vspace{\baselineskip}
+  \vspace{-\parskip}\vspace{\baselineskip}
 
 }{
 
-  \vspace{\baselineskip}
+  \vspace{-\parskip}\vspace{\baselineskip}
   \noindent{\heiti\zihao{4} 关键词：}\CUCThesis@Keywords
   \clearpage
 }
