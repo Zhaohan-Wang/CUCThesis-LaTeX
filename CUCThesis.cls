@@ -518,26 +518,33 @@
   KeywordsEN = #1,
   }
 
+  % 标题全大写，两侧各留约 2.8cm（≈5个三号字宽）边距
   \begin{center}
-    \textit{ \zihao{3} \bfseries \CUCThesis@TitleinBodyEN}
+    \begin{minipage}[t]{0.64\textwidth}
+      \centering
+      \zihao{3} \bfseries \MakeUppercase{\CUCThesis@TitleinBodyEN}
+    \end{minipage}
   \end{center}
 
-  \vspace{\baselineskip}
+  % 标题到 ABSTRACT 空三行
+  \vspace{3\baselineskip}
 
   \begin{center}
     \zihao{4} \bfseries ABSTRACT
   \end{center}
 
-  \vspace{\baselineskip}
+  % ABSTRACT 到正文空两行
+  \vspace{2\baselineskip}
 
 }{
-  \vspace{\baselineskip}
+  % 正文到 KEYWORDS 空两行
+  \vspace{2\baselineskip}
 
   \noindent
   {\zihao{4} \bfseries KEYWORDS:}~~%
   \edef\CUCThesis@TmpKW{\CUCThesis@KeywordsEN}%
   \StrSubstitute{\CUCThesis@TmpKW}{;}{~~~}[\CUCThesis@KWResult]%
-  \textit{\CUCThesis@KWResult}
+  \textit{\MakeLowercase{\CUCThesis@KWResult}}
   \clearpage
 }
 
