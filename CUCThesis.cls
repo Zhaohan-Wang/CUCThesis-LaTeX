@@ -58,6 +58,8 @@
 % 设置英文字体为 Times New Roman
 \RequirePackage{fontspec}
 \setmainfont{Times New Roman}
+% 中文与字母/数字之间保留统一间距
+\xeCJKsetup{CJKecglue=\hskip 0.15em plus 0.05em}
 
 % 调整页边距为：左右边距为2.5CM，上下边距为3.5CM
 \RequirePackage[left=2.5cm,right=2.5cm,top=3.5cm,bottom=3.5cm]{geometry}
@@ -74,14 +76,23 @@
     \renewcommand{\headrulewidth}{0.4pt}
     \fancyfoot[C]{\zihao{-5} \thepage}
 }
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \fancyhead[L]{\zihao{-5} \CUCThesis@Header}
+    \fancyhead[R]{\zihao{-5} \leftmark}
+    \renewcommand{\headrulewidth}{0.4pt}
+    \fancyfoot[C]{\zihao{-5} \thepage}
+}
 \ctexset{chapter/pagestyle = thesis}
 \pagestyle{thesis}
 
-% 目录页强制无页眉：\tableofcontents 完成后立即设为 empty
+% 目录页首页也显示“目录”页眉，标题与首条目录项之间精确空两行
 \renewcommand{\tableofcontents}{%
-  \chapter*{\contentsname
-    \@mkboth{\MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
-  \thispagestyle{empty}%
+  \phantomsection
+  \markboth{目 \quad 录}{目 \quad 录}%
+  \thispagestyle{frontmatterstyle}%
+  {\centering\CJKfamily{heiti}\bfseries\zihao{3} 目\hspace{1em}录\par}%
+  \vspace{44pt}%
   \@starttoc{toc}%
 }
 \fancypagestyle{frontmatterstyle}{
@@ -111,14 +122,14 @@
         number     = \chinese{chapter},
         aftername  = \hspace{1em},
         beforeskip = 22pt,   % 章前不额外加大间距（页面顶部已有天头）
-        afterskip  = 44pt    % 章标题下空两行（2×22pt）
+        afterskip  = 44pt    % 章标题下空小四号两行（2×22pt）
     },
     section = {
         format     = \centering\CJKfamily{heiti}\zihao{-3}, % 节标题：小三号黑体居中
         name       = {第,节},
         number     = \chinese{section},
         aftername  = \hspace{1em},
-        beforeskip = 44pt,   % 节前空两行
+        beforeskip = 22pt,   % 节前空小四号一行
         afterskip  = 22pt    % 节标题下空一行
     },
     subsection = {
@@ -126,7 +137,7 @@
         name       = {},
         number     = \chinese{subsection}、,
         aftername  = \hspace{0em},
-        beforeskip = 22pt,
+        beforeskip = 0pt,
         afterskip  = 0pt,
         indent     = 2em
     },
@@ -148,7 +159,8 @@
 \RequirePackage{booktabs}
 % 插图、公式、表格编号样式
 \RequirePackage{caption}
-\captionsetup{labelformat=default,labelsep=space, skip=5pt}
+\DeclareCaptionFont{cucthesiscaptionfont}{\zihao{5}}
+\captionsetup{labelformat=default,labelsep=space, skip=5pt, font=cucthesiscaptionfont}
 
 % 数学公式宏包
 \RequirePackage{amsmath}
@@ -197,6 +209,8 @@
 \renewcommand{\cftsubsecfont}{\songti\zihao{-4}}
 \renewcommand{\cftsubsecpagefont}{\songti\zihao{-4}}
 \setlength{\cftbeforesubsecskip}{0pt}
+\settowidth{\cftsubsecnumwidth}{\songti\zihao{-4}三、}
+\renewcommand{\cftsubsecaftersnumb}{\kern-0.35em}
 \renewcommand{\cftsubsecafterpnum}{\vspace{2.5pt}}
 
 
@@ -486,24 +500,19 @@
   \markboth{摘 \quad 要}{}
   % 罗马数字页码
   \pagenumbering{Roman}
-  % 居中
   \setup{
   % 中文关键词
   Keywords = #1,
   }
 
-  \begin{center}
-    \heiti\zihao{3} \bfseries \CUCThesis@TitleinBody
-  \end{center}
-  \vspace{-\parskip}\vspace{\baselineskip}
-  \begin{center}
-    \heiti\zihao{-3} \bfseries 摘 \quad 要
-  \end{center}
-  \vspace{-\parskip}\vspace{\baselineskip}
+  {\centering\heiti\zihao{3}\bfseries \CUCThesis@TitleinBody\par}
+  \vspace{\baselineskip}
+  {\centering\heiti\zihao{-3}\bfseries 摘 \quad 要\par}
+  \vspace{\baselineskip}
 
 }{
 
-  \vspace{-\parskip}\vspace{\baselineskip}
+  \vspace{\baselineskip}
   \noindent{\heiti\zihao{4} 关键词：}\CUCThesis@Keywords
   \clearpage
 }
@@ -517,14 +526,13 @@
   KeywordsEN = #1,
   }
 
-  % 标题全大写，两侧留5字符空隙；ABSTRACT 在同一 center 块内，标题后空三行
-  \begin{center}
-    \begin{minipage}[t]{0.78\textwidth}
-      \centering
-      \zihao{3} \bfseries \CUCThesis@TitleinBodyENUpper
-    \end{minipage} \\[3\baselineskip]
-    \zihao{4} \bfseries ABSTRACT
-  \end{center}
+  % 标题全大写；放入固定宽度盒子中居中，避免占满版心后词间距被拉大
+  {\centering
+    \parbox{0.82\textwidth}{\centering\zihao{3}\bfseries \CUCThesis@TitleinBodyENUpper\par}\par}
+
+  % 标题到 ABSTRACT 空三行
+  \vspace{3\baselineskip}
+  {\centering\zihao{4}\bfseries ABSTRACT\par}
 
   % ABSTRACT 到正文空两行
   \vspace{2\baselineskip}
@@ -558,7 +566,8 @@
   \noindent\hspace{2em}{\normalfont\thefootnote}\enspace#1}
 % \citefoot{key}：正文处显示脚注编号上标，当页脚注输出完整文献信息
 % 不使用 \supercite（避免两套编号并列），只用脚注编号作为正文标注
-\newcommand{\citefoot}[1]{\footnote{\zihao{-5}\fullcite{#1}}}
+% 脚注文献末尾统一补英文句号
+\newcommand{\citefoot}[1]{\footnote{\zihao{-5}\fullcite{#1}.}}
 
 \newenvironment{reference}{
   \clearpage
