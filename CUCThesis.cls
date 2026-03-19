@@ -29,6 +29,8 @@
   TitleinBody/.store in = \CUCThesis@TitleinBody,
   % 英文论文题目（正文）
   TitleinBodyEN/.store in = \CUCThesis@TitleinBodyEN,
+  % 英文论文题目全大写版本（用于摘要页标题，手动填写以正确处理 \LaTeX{} 等特殊宏）
+  TitleinBodyENUpper/.store in = \CUCThesis@TitleinBodyENUpper,
   % 申请人姓名
   Author/.store in = \CUCThesis@Author,
   % 指导教师
@@ -522,7 +524,7 @@
   \begin{center}
     \begin{minipage}[t]{0.64\textwidth}
       \centering
-      \zihao{3} \bfseries \MakeUppercase{\CUCThesis@TitleinBodyEN}
+      \zihao{3} \bfseries \CUCThesis@TitleinBodyENUpper
     \end{minipage}
   \end{center}
 
@@ -544,7 +546,7 @@
   {\zihao{4} \bfseries KEYWORDS:}~~%
   \edef\CUCThesis@TmpKW{\CUCThesis@KeywordsEN}%
   \StrSubstitute{\CUCThesis@TmpKW}{;}{~~~}[\CUCThesis@KWResult]%
-  \textit{\MakeLowercase{\CUCThesis@KWResult}}
+  \textit{\expandafter\MakeLowercase\expandafter{\CUCThesis@KWResult}}
   \clearpage
 }
 
