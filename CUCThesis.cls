@@ -54,6 +54,8 @@
 
 % 调整为A4纸，小四号字；oneside 避免双面排版在奇数页前插入空白页
 \LoadClass[a4paper, zihao=-4, openany, oneside]{ctexbook}
+\RequirePackage{chngcntr}
+\counterwithout{footnote}{chapter}
 
 % 设置英文字体为 Times New Roman
 \RequirePackage{fontspec}
@@ -563,7 +565,7 @@
 \renewcommand{\thefootnote}{[\arabic{footnote}]}
 \renewcommand{\@makefnmark}{\textsuperscript{\normalfont\thefootnote}}
 \renewcommand{\@makefntext}[1]{%
-  \noindent\hspace{2em}{\normalfont\thefootnote}\enspace#1}
+  \noindent{\normalfont\thefootnote}\enspace#1}
 % \citefoot{key}：正文处显示脚注编号上标，当页脚注输出完整文献信息
 % 不使用 \supercite（避免两套编号并列），只用脚注编号作为正文标注
 % 脚注文献末尾统一补英文句号
